@@ -11,11 +11,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      extendBody: true,
+      bottomNavigationBar: _navBottom(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: colorDarkBlue,
+        child: const Text('BMI'),
+        onPressed: () {},
+      ),
       body: SizedBox(
-        width: width,
-        height: MediaQuery.of(context).size.height,
+        width: double.maxFinite,
+        height: double.maxFinite,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -133,47 +140,44 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            CustomPaint(
-              size: Size(width, 100),
-              painter: CurvedNavBottomPainter(),
-            )
           ],
         ),
       ),
     );
   }
-}
 
-class CurvedNavBottomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = Colors.amber
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 1;
-
-    Path path = Path();
-    path.moveTo(0, size.height);
-    path.quadraticBezierTo(
-      size.width * 0.25,
-      size.height * 0.7,
-      size.width * 0.5,
-      size.height * 0.8,
+  Widget _navBottom() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(30.0),
+        topRight: Radius.circular(30.0),
+      ),
+      child: BottomAppBar(
+        color: colorBlue,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.show_chart,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            ),
+            const SizedBox(width: 48.0),
+            IconButton(
+              icon: const Icon(
+                Icons.filter_list,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
     );
-    path.quadraticBezierTo(
-      size.width * 0.75,
-      size.height * 0.9,
-      size.width * 1.0,
-      size.height * 0.8,
-    );
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }

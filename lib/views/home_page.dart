@@ -1,4 +1,5 @@
 import 'package:bmi_calculator_flutter/utils/constants.dart';
+import 'package:bmi_calculator_flutter/views/bmi_details.dart';
 import 'package:bmi_calculator_flutter/widgets/custom_card.dart';
 import 'package:bmi_calculator_flutter/widgets/male_famale.dart';
 import 'package:bmi_calculator_flutter/widgets/plus_minus_button.dart';
@@ -18,7 +19,17 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: colorDarkBlue,
         child: const Text('BMI'),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40),
+            ),
+            context: context,
+            builder: (ctx) {
+              return const BMIDetail();
+            },
+          );
+        },
       ),
       body: SizedBox(
         width: double.maxFinite,
@@ -149,8 +160,8 @@ class HomePage extends StatelessWidget {
   Widget _navBottom() {
     return ClipRRect(
       borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(30.0),
-        topRight: Radius.circular(30.0),
+        topLeft: Radius.circular(40.0),
+        topRight: Radius.circular(40.0),
       ),
       child: BottomAppBar(
         color: colorBlue,

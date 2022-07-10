@@ -172,9 +172,22 @@ class HomePage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const PlusMinusButton(icon: Icons.remove_sharp),
-                              Text('26', style: kTextStyleBold(40)),
-                              const PlusMinusButton(icon: Icons.add),
+                              InkWell(
+                                  onTap: () {
+                                    _bmiController.decreaseAge();
+                                  },
+                                  child: const PlusMinusButton(
+                                      icon: Icons.remove_sharp)),
+                              Obx(() {
+                                final age = _bmiController.age.value;
+                                return Text('$age', style: kTextStyleBold(40));
+                              }),
+                              InkWell(
+                                onTap: () {
+                                  _bmiController.increaseAge();
+                                },
+                                child: const PlusMinusButton(icon: Icons.add),
+                              ),
                             ],
                           ),
                         ),

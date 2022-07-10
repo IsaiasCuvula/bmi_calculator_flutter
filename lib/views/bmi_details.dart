@@ -1,5 +1,6 @@
 import 'package:bmi_calculator_flutter/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BMIDetail extends StatelessWidget {
   const BMIDetail({Key? key}) : super(key: key);
@@ -47,16 +48,19 @@ class BMIDetail extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          Container(
-            height: 40,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: colorDarkBlue,
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: Text(
-              'Close',
-              style: kTextStyleWhite(18),
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              height: 40,
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: colorDarkBlue,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Text(
+                'Close',
+                style: kTextStyleWhite(18),
+              ),
             ),
           ),
         ],

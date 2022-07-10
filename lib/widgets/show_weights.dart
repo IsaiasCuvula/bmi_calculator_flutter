@@ -11,6 +11,7 @@ class ShowWeight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
+      color: colorGrey,
       height: 180,
       child: WeightAge(
         label: 'Weight(in kg)',

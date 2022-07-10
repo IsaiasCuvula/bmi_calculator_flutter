@@ -2,13 +2,18 @@ import 'package:bmi_calculator_flutter/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard(
-      {Key? key, required this.child, this.isCenterCard = false, this.height})
-      : super(key: key);
+  const CustomCard({
+    Key? key,
+    required this.child,
+    this.isCenterCard = false,
+    this.height,
+    required this.color,
+  }) : super(key: key);
 
   final Widget child;
   final bool isCenterCard;
   final double? height;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,7 @@ class CustomCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 3,
-          color: colorGrey,
+          color: color,
         ),
         borderRadius: BorderRadius.circular(20),
       ),

@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_flutter/controllers/bmi_controller.dart';
 import 'package:bmi_calculator_flutter/utils/constants.dart';
 import 'package:bmi_calculator_flutter/views/bmi_details.dart';
 import 'package:bmi_calculator_flutter/widgets/custom_card.dart';
@@ -6,9 +7,12 @@ import 'package:bmi_calculator_flutter/widgets/plus_minus_button.dart';
 import 'package:bmi_calculator_flutter/widgets/show_weights.dart';
 import 'package:bmi_calculator_flutter/widgets/weight_age.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  final BMIController _bmiController = Get.put(BMIController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,21 +49,49 @@ class HomePage extends StatelessWidget {
                   kVerticalSpace(44),
                   Text('BMI Calculator', style: kTextStyleBold(24)),
                   kVerticalSpace(24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      CustomCard(
-                        child: MaleFemale(label: 'Male', icon: Icons.male),
-                      ),
-                      CustomCard(
-                        child: MaleFemale(label: 'Female', icon: Icons.female),
-                      ),
-                    ],
-                  ),
+                  Obx(() {
+                    final selectedGender = _bmiController.selectedGender.value;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: () {
+                            _bmiController.selectedGender(Gender.male);
+                          },
+                          child: CustomCard(
+                            color: selectedGender == Gender.male
+                                ? colorDarkBlue
+                                : colorGrey,
+                            child: const MaleFemale(
+                              label: 'Male',
+                              icon: Icons.male,
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: () {
+                            _bmiController.selectedGender(Gender.female);
+                          },
+                          child: CustomCard(
+                            color: selectedGender == Gender.female
+                                ? colorDarkBlue
+                                : colorGrey,
+                            child: const MaleFemale(
+                              label: 'Female',
+                              icon: Icons.female,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
                   kVerticalSpace(24),
                   CustomCard(
                     height: 190,
                     isCenterCard: true,
+                    color: colorGrey,
                     child: Center(
                       child: Column(
                         children: [
@@ -134,6 +166,7 @@ class HomePage extends StatelessWidget {
                       ),
                       CustomCard(
                         height: 180,
+                        color: colorGrey,
                         child: WeightAge(
                           label: 'Age',
                           child: Row(

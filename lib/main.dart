@@ -1,6 +1,7 @@
 import 'package:bmi_calculator_flutter/views/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BMI CALCULATOR',
       home: HomePage(),

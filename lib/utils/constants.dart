@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+enum Gender { male, female, none }
+
 final colorGrey = Colors.grey.withOpacity(0.2);
 const colorBlue = Color(0xFF2565CC);
 const colorDarkBlue = Color(0xFF0A1028);

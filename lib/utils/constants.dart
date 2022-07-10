@@ -25,6 +25,26 @@ TextStyle kTextStyle(double size) {
   );
 }
 
+TextStyle kTextStyleBoldWhite(double size) {
+  return GoogleFonts.nunito(
+    textStyle: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w700,
+      fontSize: size,
+    ),
+  );
+}
+
+TextStyle kTextStyleWhite(double size) {
+  return GoogleFonts.nunito(
+    textStyle: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w400,
+      fontSize: size,
+    ),
+  );
+}
+
 Widget kVerticalSpace(double height) {
   return SizedBox(
     height: height,

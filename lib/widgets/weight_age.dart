@@ -12,9 +12,11 @@ class WeightAge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          label,
-          style: kTextStyleBold(18),
+        Expanded(
+          child: Text(
+            label,
+            style: kTextStyleBold(18),
+          ),
         ),
         kVerticalSpace(18),
         child

@@ -23,7 +23,7 @@ class HeightInfo extends StatelessWidget {
                 _bmiController.getSelectedHeightIndex(index, height);
               },
               child: Obx(() {
-                final selectedIndex = _bmiController.selectedHeight.value;
+                final selectedIndex = _bmiController.selectedHeightIndex.value;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

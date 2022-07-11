@@ -23,7 +23,7 @@ class WeightInfo extends StatelessWidget {
                 _bmiController.getSelectedWeightIndex(index, weight);
               },
               child: Obx(() {
-                final selectedIndex = _bmiController.selectedWeight.value;
+                final selectedIndex = _bmiController.selectedWeightIndex.value;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

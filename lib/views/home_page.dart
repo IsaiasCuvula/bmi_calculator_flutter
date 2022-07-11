@@ -20,6 +20,22 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final BMIController _bmiController = Get.put(BMIController());
 
+  void _calculateBMIShowResult(BuildContext context) {
+    _bmiController.calculateBMI();
+    final bmi = _bmiController.bmi;
+    if (bmi != 0.0) {
+      showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        context: context,
+        builder: (ctx) {
+          return BMIDetail();
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,18 +44,8 @@ class HomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: colorDarkBlue,
+        onPressed: () => _calculateBMIShowResult(context),
         child: const Text('BMI'),
-        onPressed: () {
-          showModalBottomSheet(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40),
-            ),
-            context: context,
-            builder: (ctx) {
-              return const BMIDetail();
-            },
-          );
-        },
       ),
       body: SizedBox(
         width: double.maxFinite,

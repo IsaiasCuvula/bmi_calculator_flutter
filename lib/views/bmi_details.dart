@@ -11,9 +11,12 @@ class BMIDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: double.maxFinite * 0.5,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: colorBlue,
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(40),
+          topLeft: Radius.circular(40),
+        ),
       ),
       child: SingleChildScrollView(
         child: Container(

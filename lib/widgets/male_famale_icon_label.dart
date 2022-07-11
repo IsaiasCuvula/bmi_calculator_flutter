@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
-class MaleFemale extends StatelessWidget {
-  const MaleFemale({Key? key, required this.label, required this.icon})
+class MaleFemaleIconLabel extends StatelessWidget {
+  const MaleFemaleIconLabel({Key? key, required this.label, required this.icon})
       : super(key: key);
 
   final String label;

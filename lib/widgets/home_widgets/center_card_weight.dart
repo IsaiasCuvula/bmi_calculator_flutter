@@ -17,7 +17,7 @@ class CenterCardWeight extends StatelessWidget {
         child: Column(
           children: [
             Text('Height (in cm)', style: kTextStyleBold(20)),
-            const HeightInfo(),
+            HeightInfo(),
             const ScaleRuler(),
           ],
         ),
